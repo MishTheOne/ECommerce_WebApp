@@ -22,6 +22,8 @@ const OrderList = ({ history }) => {
   const alert = useAlert();
 
   const { error, orders } = useSelector((state) => state.allOrders);
+  console.log("orders:", orders);
+  console.log("error:", error);
 
   const { error: deleteError, isDeleted } = useSelector((state) => state.order);
 

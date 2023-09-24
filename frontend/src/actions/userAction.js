@@ -42,7 +42,7 @@ import axios from "axios";
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
-
+    console.log(email);
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(

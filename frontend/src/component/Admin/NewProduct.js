@@ -23,7 +23,7 @@ const NewProduct = ({ history }) => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [Stock, setStock] = useState(0);
+  const [stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -53,17 +53,14 @@ const NewProduct = ({ history }) => {
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
-
-    myForm.set("name", name);
-    myForm.set("price", price);
-    myForm.set("description", description);
-    myForm.set("category", category);
-    myForm.set("Stock", Stock);
-
-    images.forEach((image) => {
-      myForm.append("images", image);
-    });
+    const myForm = {
+      name,
+      price,
+      description,
+      category,
+      stock,
+      images,
+    };
     dispatch(createProduct(myForm));
   };
 
@@ -116,6 +113,7 @@ const NewProduct = ({ history }) => {
                 type="number"
                 placeholder="Price"
                 required
+                value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
@@ -150,6 +148,7 @@ const NewProduct = ({ history }) => {
                 type="number"
                 placeholder="Stock"
                 required
+                value={stock}
                 onChange={(e) => setStock(e.target.value)}
               />
             </div>

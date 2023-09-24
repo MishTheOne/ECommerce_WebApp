@@ -30,7 +30,7 @@ const ConfirmOrder = ({ history }) => {
       tax,
       totalPrice,
     };
-
+    console.log("data:", data);
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
     history.push("/process/payment");

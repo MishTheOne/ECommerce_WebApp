@@ -9,6 +9,7 @@ import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
+import ReactSlider from "react-slider";
 
 const categories = [
   "Laptop",

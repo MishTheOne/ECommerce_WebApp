@@ -45,14 +45,15 @@ import NotFound from "./component/layout/Not Found/NotFound";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
+  console.log(user);
 
-  const [stripeApiKey, setStripeApiKey] = useState("");
+  // const [stripeApiKey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+  // async function getStripeApiKey() {
+  //   const { data } = await axios.get("/api/v1/stripeapikey");
 
-    setStripeApiKey(data.stripeApiKey);
-  }
+  //   setStripeApiKey(data.stripeApiKey);
+  // }
 
   useEffect(() => {
     WebFont.load({
@@ -63,7 +64,7 @@ function App() {
 
     store.dispatch(loadUser());
 
-    getStripeApiKey();
+    // getStripeApiKey();
   }, []);
 
   window.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -74,11 +75,11 @@ function App() {
 
       {isAuthenticated && <UserOptions user={user} />}
 
-      {stripeApiKey && (
+      {/* {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
           <ProtectedRoute exact path="/process/payment" component={Payment} />
         </Elements>
-      )}
+      )} */}
 
       <Switch>
         <Route exact path="/" component={Home} />
@@ -119,6 +120,8 @@ function App() {
         <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 
         <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
+
+        <ProtectedRoute exact path="/process/payment" component={Payment} />
 
         <ProtectedRoute
           isAdmin={true}

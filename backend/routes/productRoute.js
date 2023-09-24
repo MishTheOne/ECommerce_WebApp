@@ -8,12 +8,17 @@ const {
   deleteProduct,
   getProductDetails,
   createProductReview,
-  getProductReviws,
+  getProductReviews,
   deleteReview,
+  getAdminProducts,
 } = require("../controller/productController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
 router.route("/products").get(getAllProducts);
+
+router
+  .route("/admin/products")
+  .get(isAuthenticatedUser, authorizeRoles("admin"), getAdminProducts);
 
 router
   .route("/admin/product/new")
@@ -30,7 +35,7 @@ router.route("/review").put(isAuthenticatedUser, createProductReview);
 
 router
   .route("/reviews")
-  .get(getProductReviws)
+  .get(getProductReviews)
   .delete(isAuthenticatedUser, deleteReview);
 
 module.exports = router;

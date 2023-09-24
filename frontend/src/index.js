@@ -6,6 +6,9 @@ import store from "./store";
 
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import axios from "axios";
+
+// axios.defaults.baseURL = "http://localhost:4000";
 
 const options = {
   timeout: 5000,
@@ -18,6 +21,7 @@ ReactDOM.render(
     <AlertProvider template={AlertTemplate} {...options}>
       <App />
     </AlertProvider>
+    {/* <App /> */}
   </Provider>,
   document.getElementById("root")
 );
